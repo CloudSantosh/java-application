@@ -27,7 +27,7 @@ If you have these prerequisites ready, let's proceed to set up Jenkins, configur
 
 ## Setting up Jenkins
 
-In order to set up jenkins, you need to make ready with jenkins server. Here is the github link where terraform code is used to make jenkins server ready i.e. [link](https://github.com/CloudSantosh/Jenkins_tomcat_deployment)
+In order to set up jenkins, you need to make ready with jenkins server. Here is the [github link of provisioning jenkins infrastructure](https://github.com/CloudSantosh/Jenkins_tomcat_deployment) where terraform code is used to make jenkins server ready.
 
 #### Install jenkins on jenkin-server node
 
@@ -91,7 +91,18 @@ steps
   ![App Screenshot](images/5.png)
   ![App Screenshot](images/6.png)
 
-# For CI/CD we use web-hook for automatic build trigger
+Note: Since Jenkins server has also jenkins user and jenkins group. there jenkins user should have sudo access otherwise the following error occurs while bhuilding.
+![App Screenshot](images/8.png)
+In order avoid it, we need to add following lines under /etc/sudoers.
+
+steps
+
+- sudo chmod 755 /etc/sudoers
+- sudo nano /etc/sudoers
+- add jenkins ALL=(ALL) NOPSSWD:ALL
+  ![App Screenshot](images/7.png)
+
+## Configuring GitHub Webhook
 
 steps
 
@@ -99,17 +110,77 @@ steps
 - Click at settings
 - Click at webhook
 
-![App Screenshot](images/webhook.png)
+![App Screenshot](images/10.png)
 
-# Apache Webserver
+## Configuring Tomcat Server
 
-The folder /var/www/html/ has a default user as root. Therefore, it is supposed to be changed into normal user and in our case, it is ubuntu.
-![App Screenshot](images/website.png)
+Tomcat is a widely used open-source application server that is used to deploy and run Java web applications. This section provides guidance on configuring Tomcat for your Java Address Book application deployment.
 
-# Build is triggered.
+### Installation
 
-![App Screenshot](images/final-result.png)
+Before configuring Tomcat, ensure that you have Tomcat installed on your server. You can download the latest version of Tomcat from the [official Apache Tomcat website](https://tomcat.apache.org/). Follow the installation instructions provided for your specific operating system.
 
-# Final Result
+### Configuration Files
 
-![App Screenshot](images/output.png)
+Tomcat's configuration is primarily managed through a set of XML files located in the Tomcat installation directory. The most commonly modified configuration files include in our application is :
+
+1. `conf/tomcat-users.xml`: This file contains configuration settings for the Tomcat server itself, such as defining management gui.
+
+2. `conf/web.xml`: This file is used to configure global settings for web applications deployed on Tomcat, including servlet mappings, error pages, and more.
+
+3. `conf/context.xml`: This file allows you to configure context-specific settings for web applications. You can define resources like database connections and configure context parameters.
+
+4. `conf/catalina.policy`: This file defines security policies for web applications. It's important for securing your applications.
+
+### Configuring Data Sources
+
+If your Java Address Book application requires database access, you may need to configure data sources in Tomcat. This involves defining connection pools and associating them with your web application. To configure data sources, you can typically edit the `conf/context.xml` file and add `<Resource>` elements.
+
+```xml
+<Resource name="jdbc/AddressBookDB" auth="Container" type="javax.sql.DataSource"
+  maxActive="100" maxIdle="30" maxWait="10000"
+  username="yourdbusername" password="yourdbpassword"
+  driverClassName="com.mysql.jdbc.Driver"
+  url="jdbc:mysql://localhost:3306/addressbookdb"/>
+```
+
+Replace the placeholders with your actual database details.
+
+### Deploying Your Application
+
+To deploy your Java Address Book application to Tomcat, you can typically do the following:
+
+1. Build your application WAR file using a build tool like Maven.
+
+2. Copy the WAR file to Tomcat's `webapps` directory (e.g., `webapps/myapp.war`).
+
+3. Start or restart Tomcat.
+
+Tomcat will automatically deploy your application and make it accessible via the specified context path.
+
+### Managing Tomcat
+
+You can start, stop, and manage Tomcat using the following commands:
+
+- To start Tomcat: `./bin/startup.sh` (Unix/Linux) or `./bin/startup.bat` (Windows).
+- To stop Tomcat: `./bin/shutdown.sh` (Unix/Linux) or `./bin/shutdown.bat` (Windows).
+
+### Additional Resources
+
+For more detailed information on Tomcat configuration and administration, refer to the official [Apache Tomcat documentation](https://tomcat.apache.org/documentation.html).
+
+---
+
+Feel free to customize this text as per your specific application and configuration requirements. Include any additional details or steps relevant to your project.
+
+In order to confuring tomcat server, we have used same jenkins server to host tomcat application with port 8081.
+
+## Automating Deployment
+
+Automating deployment is initiated by [Jenkinsfile configurtion file along with tomcat server](https://github.com/CloudSantosh/java-application/blob/master/Jenkinsfile)
+![App Screenshot](images/2.png)
+
+## Conclusion
+
+![App Screenshot](images/9.png)
+![App Screenshot](images/1.png)
