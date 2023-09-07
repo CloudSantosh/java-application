@@ -1,18 +1,18 @@
-# Deploy Java Address Book Application using Jenkins and Github webhook on Tomcat Server
-
-# Deploying Java Address Book Application using Jenkins and GitHub Webhook on Tomcat Server
-
-Welcome to the README for deploying a Java Address Book application using Jenkins and GitHub Webhook on a Tomcat Server. In this guide, we will walk you through the process of automating the deployment of a Java-based Address Book application. By leveraging Jenkins, a popular continuous integration and continuous deployment (CI/CD) tool, along with GitHub Webhooks, we will streamline the deployment process and ensure that your application is always up-to-date.
+# Address Book Application using Jenkins and Github webhook on Tomcat Server
 
 **Table of Contents:**
 
-1. [Introduction](#deploying-java-address-book-application-using-jenkins-and-github-webhook-on-tomcat-server)
+1. [Introduction](#Introduction)
 2. [Prerequisites](#prerequisites)
 3. [Setting up Jenkins](#setting-up-jenkins)
 4. [Configuring GitHub Webhook](#configuring-github-webhook)
 5. [Configuring Tomcat Server](#configuring-tomcat-server)
 6. [Automating Deployment](#automating-deployment)
 7. [Conclusion](#conclusion)
+
+## Introduction
+
+Deploying a Java Address Book application using Jenkins and GitHub Webhook on a Tomcat Server. In this guide, we will walk you through the process of automating the deployment of a Java-based Address Book application. By leveraging Jenkins, a popular continuous integration and continuous deployment (CI/CD) tool, along with GitHub Webhooks, we will streamline the deployment process and ensure that your application is always up-to-date.
 
 ## Prerequisites
 
@@ -25,6 +25,9 @@ Before we dive into the deployment process, make sure you have the following pre
 
 If you have these prerequisites ready, let's proceed to set up Jenkins, configure GitHub Webhook, and automate the deployment of your Java Address Book application to the Tomcat Server. This guide will help you achieve a seamless and efficient deployment process, ensuring your application is always accessible and up-to-date.
 
+## Setting up Jenkins
+
+In order to set up jenkins, you need to make ready with jenkins server. Here is the github link where terraform code is used to make jenkins server ready i.e. [link](https://github.com/CloudSantosh/Jenkins_tomcat_deployment)
 ![App Screenshot](images/image1.png)
 
 # Infrastructure Provisioning Using terraform
