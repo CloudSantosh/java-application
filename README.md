@@ -86,6 +86,7 @@ steps
 - under branches to build, specify branch name, for example \*/master
 - Under Script path type Jenkinsfile because in the git the pipeline scriot is stored in it.
 - Select apply or save
+
   ![App Screenshot](images/3.png)
   ![App Screenshot](images/4.png)
   ![App Screenshot](images/5.png)
@@ -100,7 +101,8 @@ steps
 - sudo chmod 755 /etc/sudoers
 - sudo nano /etc/sudoers
 - add jenkins ALL=(ALL) NOPSSWD:ALL
-  ![App Screenshot](images/7.png)
+
+![App Screenshot](images/7.png)
 
 ## Configuring GitHub Webhook
 
@@ -116,11 +118,11 @@ steps
 
 Tomcat is a widely used open-source application server that is used to deploy and run Java web applications. This section provides guidance on configuring Tomcat for your Java Address Book application deployment.
 
-### Installation
+#### Installation
 
 Before configuring Tomcat, ensure that you have Tomcat installed on your server. You can download the latest version of Tomcat from the [official Apache Tomcat website](https://tomcat.apache.org/). Follow the installation instructions provided for your specific operating system.
 
-### Configuration Files
+#### Configuration Files
 
 Tomcat's configuration is primarily managed through a set of XML files located in the Tomcat installation directory. The most commonly modified configuration files include in our application is :
 
@@ -132,7 +134,7 @@ Tomcat's configuration is primarily managed through a set of XML files located i
 
 4. `conf/catalina.policy`: This file defines security policies for web applications. It's important for securing your applications.
 
-### Configuring Data Sources
+#### Configuring Data Sources
 
 If your Java Address Book application requires database access, you may need to configure data sources in Tomcat. This involves defining connection pools and associating them with your web application. To configure data sources, you can typically edit the `conf/context.xml` file and add `<Resource>` elements.
 
@@ -146,7 +148,7 @@ If your Java Address Book application requires database access, you may need to 
 
 Replace the placeholders with your actual database details.
 
-### Deploying Your Application
+#### Deploying Your Application
 
 To deploy your Java Address Book application to Tomcat, you can typically do the following:
 
@@ -158,22 +160,22 @@ To deploy your Java Address Book application to Tomcat, you can typically do the
 
 Tomcat will automatically deploy your application and make it accessible via the specified context path.
 
-### Managing Tomcat
+#### Managing Tomcat
 
 You can start, stop, and manage Tomcat using the following commands:
 
 - To start Tomcat: `./bin/startup.sh` (Unix/Linux) or `./bin/startup.bat` (Windows).
 - To stop Tomcat: `./bin/shutdown.sh` (Unix/Linux) or `./bin/shutdown.bat` (Windows).
 
-### Additional Resources
+In order to confuring tomcat server, we have used same jenkins server to host tomcat application with port 8081.
+
+#### Additional Resources
 
 For more detailed information on Tomcat configuration and administration, refer to the official [Apache Tomcat documentation](https://tomcat.apache.org/documentation.html).
 
 ---
 
 Feel free to customize this text as per your specific application and configuration requirements. Include any additional details or steps relevant to your project.
-
-In order to confuring tomcat server, we have used same jenkins server to host tomcat application with port 8081.
 
 ## Automating Deployment
 
