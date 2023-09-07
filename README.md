@@ -29,8 +29,6 @@ If you have these prerequisites ready, let's proceed to set up Jenkins, configur
 
 In order to set up jenkins, you need to make ready with jenkins server. Here is the github link where terraform code is used to make jenkins server ready i.e. [link](https://github.com/CloudSantosh/Jenkins_tomcat_deployment)
 
-## Script for jenkins server and Apache webserver
-
 #### Install jenkins on jenkin-server node
 
 ```bash
@@ -79,16 +77,19 @@ steps
 
 - Click New item
 - Type name of the item
-- choose freestyle project
+- choose Pipeline project
 - Click Ok
-- Select github project and paste urls of repository
-- Select git
-- Paste xxxxxx.git from github
 - Select github hook trigger from GITSCM pooling for webhook
-- Select build steps
-- Select send files and execute command over ssh
-
-![App Screenshot](images/ssh-server-publisher.png)
+- Under pipeline Select pipeline script from SCM
+- Select git
+- Paste xxxxxx.git from github under repository url
+- under branches to build, specify branch name, for example \*/master
+- Under Script path type Jenkinsfile because in the git the pipeline scriot is stored in it.
+- Select apply or save
+  ![App Screenshot](images/3.png)
+  ![App Screenshot](images/4.png)
+  ![App Screenshot](images/5.png)
+  ![App Screenshot](images/6.png)
 
 # For CI/CD we use web-hook for automatic build trigger
 
