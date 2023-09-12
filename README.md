@@ -14,6 +14,8 @@
 
 Deploying a Java Address Book application using Jenkins and GitHub Webhook on a Tomcat Server. In this guide, we will walk you through the process of automating the deployment of a Java-based Address Book application. By leveraging Jenkins, a popular continuous integration and continuous deployment (CI/CD) tool, along with GitHub Webhooks, we will streamline the deployment process and ensure that your application is always up-to-date.
 
+![App Screenshot](images/11.png)
+
 ## Prerequisites
 
 Before we dive into the deployment process, make sure you have the following prerequisites in place:
